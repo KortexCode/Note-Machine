@@ -38,7 +38,7 @@ module.exports = {
           }
         ]
     },
-    Plugins:[
+    plugins:[
         new HtmlWebpackPlugin( //Para optimizar el html
         {
             filename: "index.html",
