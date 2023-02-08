@@ -1,0 +1,27 @@
+.btn-add{
+    width: 50px;
+    height: 50px;
+    margin-top: 12px;
+    border: 0;
+    border-radius: 100%;
+    box-shadow: 2px 2px 4px black;
+    position: fixed;
+    top: auto;
+    bottom: 8px;
+    right: 6px;
+    left: auto;
+    z-index: 1;
+    background-color: #5b7c14;
+}
+.btn-add:hover{
+    color: #B1D16D;
+}
+.btn-add i{
+    font-size: 24px;
+}
+
+@media(min-width: 1024px){
+    .btn-add{
+       display: none;
+    }
+}

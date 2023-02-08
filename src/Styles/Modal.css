@@ -1,0 +1,119 @@
+.ModalBackground {
+    
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* color: white; */
+    background-color: #8a9279d5;
+}
+.AddToDo{
+    width: 75%;
+    max-width: 400px;
+    min-width: 300px;
+    height: 55%;
+    margin: 0 auto;
+    border-radius: 8px;
+    border: 1px solid black;
+    box-shadow: 2px 2px 4px black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background-color: YellowGreen */;
+    background-color: #B1D16D;
+}
+.AddToDo__title{
+    font-size: 28px;
+    font-weight: 700;
+    color: black;
+   
+}
+.AddToDo__text-area{
+    margin: 40px 40px;
+    width: 260px;
+    height: 140px;
+    border-radius: 8px;
+    border: 2px solid #698727;
+    outline: none;
+}
+.AddToDo__text-area::placeholder{
+    color: #868686;
+    font-family: 'Montserrat';
+    font-weight: 400;    
+}
+.AddToDo__btn-container{
+    width: 75%;
+    max-width: 260px;
+    min-width: 225px;
+    display: flex;
+    justify-content: space-between;
+}
+.AddToDo__btn-add{
+    width: 110px;
+    padding: 10px 15px;
+    border: 0;
+    border-radius: 8px;
+    box-shadow: 2px 2px 4px black;
+    font-size: 18px;
+    font-weight: 700;
+    color: rgb(7, 7, 7);
+    background-color: green;
+
+}
+.AddToDo__btn-add:hover{
+    color: white;
+}
+.AddToDo__btn-cancel{
+    width: 110px;
+    padding: 10px 15px;
+    border: 0;
+    border-radius: 8px;
+    box-shadow: 2px 2px 4px black;
+    font-size: 18px;
+    font-weight: 700;
+    color: rgb(7, 7, 7);
+    background-color: red;
+}
+.AddToDo__btn-cancel:hover{
+    color: white;
+}
+
+@media(min-width: 1024px){
+    .ModalBackground {
+      
+        width: 100%;
+        display:block;
+        position:static;
+        background-color: #B1D16D;
+       
+    }
+    .AddToDo{
+        width: 450px;
+        max-width: 450px;
+        min-width: 300px;
+        height: 535px;
+        padding-top: 24px;
+        padding-left: 16px;
+        border-radius: none;
+        border: none;
+        box-shadow: 0px 0px 6px 6px #89bb1e;
+        justify-content: start;
+        background-color: rgba(255, 255, 255, 0.555);
+    }
+    .AddToDo__text-area{
+        width: 260px;
+        margin: 40px 0;
+       
+    }
+    .AddToDo__btn-container{
+        justify-content: center;
+    }
+    .AddToDo__btn-cancel{
+        display: none;
+    }
+} 
