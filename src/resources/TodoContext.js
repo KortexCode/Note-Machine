@@ -22,7 +22,7 @@ function ToDoContext(){
     //Filtramos cuantos toDos están completados, esto para el <TodoCounter>
     const completedTodos = storageToDos?.filter((todo)=> !!todo.completed).length;
     //Cuantos toDos hay en nuestra lista, completados y no completados.
-    const totalToDos = storageToDos.length;
+    const totalToDos = storageToDos?.length;
 
     //Se crean estados para el botón de abrir modal
     const [openModal, setOpenModal] = React.useState(false);
@@ -33,9 +33,9 @@ function ToDoContext(){
     let searchedTodos = [];
     console.log("toDos", toDos);
     //Se valida si se está realizando o no una consulta en el input
-    if(!searchValue.length >= 1){ //En caso que no se esté haciendo una consulta
+    if(!searchValue?.length >= 1){ //En caso que no se esté haciendo una consulta
       //Se valida si la cantidad de toDos es la misma tanto en el array de localStorage como en toDos
-      if(toDos.length < storageToDos.length){//Si no es la misma  
+      if(toDos?.length < storageToDos?.length){//Si no es la misma  
         setToDos(storageToDos);//Actualizamos el Array de toDos  
       }
       //De lo contrario, si es la misma, renderizamos lo que hay localStorage
