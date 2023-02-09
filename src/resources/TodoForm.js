@@ -4,11 +4,25 @@ import { todoContext } from "./TodoContext";
 function TodoForm(){
 
     const [text, setText] = React.useState('');
-    const {addToDo, setOpenModal} = React.useContext(todoContext);
+    const {addToDo, setOpenModal, storageToDos} = React.useContext(todoContext);
  
     function onSend(event){
         event.preventDefault();
-        addToDo(text);
+       
+        const repeatNote = storageToDos.filter((todo)=>{
+            console.log(text)
+            const todoText = todo.text.toLowerCase();
+            const repeatText = text.toLowerCase();
+            //Si lo ingresado en el input concuerda con el texto de la tarea que se busca
+            //entonces devolverá un true
+            return todoText.includes(repeatText);
+        })
+
+        if(!repeatNote[0] || !storageToDos[0]){
+            addToDo(text);
+        }else{
+            alert("La nota que intentas ingresar ya existe")
+        }     
     }
     function onCancel(){
         setOpenModal(false)

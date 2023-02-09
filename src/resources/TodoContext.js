@@ -84,12 +84,12 @@ function ToDoContext(){
 
     //AGREGAR UN TODO
     function addToDo(text){
+
       const newTodos = [...storageToDos];
       if(text){
         newTodos.push({
           text,
           completed: false
-  
         });
       }else{
         alert("Debes ingresar algún texto para crear una tarea")

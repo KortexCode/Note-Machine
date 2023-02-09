@@ -4,12 +4,11 @@ import "../Styles/TodoSearch.css";
 
 function TodoSearch(){
 
-    const {setSearchValue, searchedTodos, loading, storageToDos} = React.useContext(todoContext);
+    const {setSearchValue, searchedTodos, searchValue} = React.useContext(todoContext);
 
     function inputQuery(event){   
         setSearchValue(event.target.value);
     }
-
     return (  
         <React.Fragment>
             <div className="todo-search__container">
@@ -18,7 +17,7 @@ function TodoSearch(){
                     <i className="fa-sharp fa-solid fa-magnifying-glass"></i>
                 </span>
             </div>     
-            {((!searchedTodos.length && !loading) && storageToDos.length) && <p className="todo-search__coincidences">La búsqueda solicitada no encuentra coincidencias</p>} 
+            {(searchValue && !searchedTodos.length) && <p className="todo-search__coincidences">La búsqueda solicitada no encuentra coincidencias</p>} 
         </React.Fragment>    
     )
 }
