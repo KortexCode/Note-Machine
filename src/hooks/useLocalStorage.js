@@ -16,7 +16,7 @@ function useLocalStorage(item, initialItem){
       
       setTimeout(()=>{//Luego de 1 segundo se obtendrán los datos de la app
         try{
-          let newToDos;
+          let newToDos = [];
           //Almacenamiento de la lista de tareas
           const toDosInLocal = localStorage.getItem(item);
           
@@ -25,8 +25,10 @@ function useLocalStorage(item, initialItem){
             localStorage.setItem(item, JSON.stringify(initialItem));
           }
           else{
+            console.log("entró al else?")
             newToDos = JSON.parse(toDosInLocal);
           }
+          console.log("en use", newToDos)
           setToDos(newToDos);
           setLoading(false);
           setStorageToDos(newToDos)
