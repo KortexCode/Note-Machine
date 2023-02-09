@@ -38,7 +38,7 @@ function App() {
   //Validación para los loadin Skeletons
   let array;
   array = JSON.parse(localStorage.getItem("toDos_V1"));
-  if(!array.length){
+  if(!array.length || null){
     array = [];
   }
   else{
