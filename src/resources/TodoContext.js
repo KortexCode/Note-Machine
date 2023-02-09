@@ -20,7 +20,7 @@ function ToDoContext(){
     
     //MARCADOR
     //Filtramos cuantos toDos están completados, esto para el <TodoCounter>
-    const completedTodos = storageToDos.filter((todo)=> !!todo.completed).length;
+    const completedTodos = storageToDos?.filter((todo)=> !!todo.completed).length;
     //Cuantos toDos hay en nuestra lista, completados y no completados.
     const totalToDos = storageToDos.length;
 
@@ -31,6 +31,7 @@ function ToDoContext(){
     //se crea un estado para la información del input de búsqueda
     const [searchValue, setSearchValue] = React.useState("");
     let searchedTodos = [];
+    console.log("toDos", toDos);
     //Se valida si se está realizando o no una consulta en el input
     if(!searchValue.length >= 1){ //En caso que no se esté haciendo una consulta
       //Se valida si la cantidad de toDos es la misma tanto en el array de localStorage como en toDos
@@ -41,7 +42,8 @@ function ToDoContext(){
       searchedTodos = [...storageToDos];
     }
     else{ //En caso que si se esté haciendo una consulta
-      //Guardamos un array con los elementos consutlados
+      //Guardamos un array con los elementos consultados
+      console.log("toDos", toDos);
       searchedTodos = toDos.filter( todo => {
         const todoText = todo.text.toLowerCase();
         const todoSearch = searchValue.toLowerCase();
