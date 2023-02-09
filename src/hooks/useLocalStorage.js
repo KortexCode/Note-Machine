@@ -25,10 +25,8 @@ function useLocalStorage(item, initialItem){
             localStorage.setItem(item, JSON.stringify(initialItem));
           }
           else{
-            console.log("entró al else?")
             newToDos = JSON.parse(toDosInLocal);
           }
-          console.log("en use", newToDos)
           setToDos(newToDos);
           setLoading(false);
           setStorageToDos(newToDos)

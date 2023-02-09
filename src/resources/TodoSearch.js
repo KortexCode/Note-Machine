@@ -18,7 +18,7 @@ function TodoSearch(){
                     <i className="fa-sharp fa-solid fa-magnifying-glass"></i>
                 </span>
             </div>     
-            {((!searchedTodos.length && !loading) && !storageToDos) && <p className="todo-search__coincidences">La búsqueda solicitada no encuentra coincidencias</p>} 
+            {((!searchedTodos.length && !loading) && storageToDos.length) && <p className="todo-search__coincidences">La búsqueda solicitada no encuentra coincidencias</p>} 
         </React.Fragment>    
     )
 }

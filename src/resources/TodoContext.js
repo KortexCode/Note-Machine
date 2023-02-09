@@ -16,7 +16,7 @@ function ToDoContext(){
         setStorageToDos,
         saveDataInLocalStorage
         
-    } = useLocalStorage("toDos_V1", [{text: "Comienza a crear notas", completed:false}]); //Custom hook para manejar lógica de estados y preparación de datos
+    } = useLocalStorage("toDos_V1", []); //Custom hook para manejar lógica de estados y preparación de datos
     
     //MARCADOR
     //Filtramos cuantos toDos están completados, esto para el <TodoCounter>
