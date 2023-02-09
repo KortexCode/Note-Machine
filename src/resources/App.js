@@ -36,12 +36,14 @@ function App() {
     storageToDos} = React.useContext(todoContext);
 
   //Validación para los loadin Skeletons
-  let array = [];
+  let array;
   array = JSON.parse(localStorage.getItem("toDos_V1"));
-  if(!array.length) 
-    array = [{text: "texto-1"}];
-  else
-    array = JSON.parse( localStorage.getItem("toDos_V1"));
+  if(!array.length){
+    array = [];
+  }
+  else{
+    array = JSON.parse(localStorage.getItem("toDos_V1"));
+  }
   
  
   //RETORNAR EL COMPONENTE
@@ -53,8 +55,7 @@ function App() {
       <TodoList>
         {error && <p>Ha ocurrido un error al cargar los datos</p>}
         {loading && <p>Estamos cargando los datos</p>}
-        {loading &&  array.map((todo)=> <li key={todo.text} className='todo-item--skeleton'></li>)
-        } 
+        {loading &&  array.map((todo)=> <li key={todo.text} className='todo-item--skeleton'></li>)} 
         {(!loading && !storageToDos.length) && <p>Crea tu primer ToDo</p>}
         {searchedTodos.map(todo => (
         <TodoItem key={todo.text} text={todo.text} completed={todo.completed} onCompleted={() => completeTodo(todo.text)} onDelete={()=> deleteTodo(todo.text)}/>
