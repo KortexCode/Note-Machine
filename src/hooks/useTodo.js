@@ -1,11 +1,8 @@
 import React from "react";
-import { useLocalStorage } from "../hooks/useLocalStorage";
-import {App} from "./App";
+import { useLocalStorage } from "./useLocalStorage";
 
-//Se crea un contexto
-const todoContext = React.createContext();
 //Aquí estará la lógica más importante de la aplicación
-function ToDoContext(){
+function useToDo(){
 
     const {
         toDos, 
@@ -111,27 +108,23 @@ function ToDoContext(){
       } 
     }, [])
 
-    return (
-        <todoContext.Provider value={{
-            completedTodos,
-            toDos, 
-            setToDos,
-            searchValue,
-            setSearchValue,
-            openModal,
-            setOpenModal,
-            totalToDos,
-            searchedTodos,
-            storageToDos, 
-            loading,
-            error,
-            addToDo,
-            deleteTodo,
-            completeTodo
-        }}>
-            <App/>
-        </todoContext.Provider>
-    )
+    return {
+      completedTodos,
+      toDos, 
+      setToDos,
+      searchValue,
+      setSearchValue,
+      openModal,
+      setOpenModal,
+      totalToDos,
+      searchedTodos,
+      storageToDos, 
+      loading,
+      error,
+      addToDo,
+      deleteTodo,
+      completeTodo
+    }      
 }
 
-export {ToDoContext, todoContext}
+export {useToDo}

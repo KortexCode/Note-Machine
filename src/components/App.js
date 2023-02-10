@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { TodoCounter } from './TodoCounter';
 import { TodoSearch } from './TodoSearch';
 import { TodoList } from './TodoList';
@@ -6,7 +6,8 @@ import { TodoItem } from './TodoItem';
 import { CreateTodoButton } from './CreateTodoButtom';
 import { Modal } from '../Modal';
 import { TodoForm } from './TodoForm';
-import { todoContext } from './TodoContext';
+import {useToDo} from '../hooks/useTodo';
+
 
 
 function App() {
@@ -25,7 +26,7 @@ function App() {
     setOpenModal,
     storageToDos,
     addToDo,
-  } = React.useContext(todoContext);
+  } = useToDo();
 
   //Validación para los loadin Skeletons
   let array;
@@ -58,7 +59,7 @@ function App() {
       {openModal && (<Modal>
          <TodoForm storageToDos={storageToDos} setOpenModal={setOpenModal} addToDo={addToDo}></TodoForm>
       </Modal>)}
-      <CreateTodoButton/>
+      <CreateTodoButton setOpenModal={setOpenModal}/>
     </React.Fragment>
    
   );

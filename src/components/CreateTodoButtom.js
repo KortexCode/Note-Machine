@@ -1,11 +1,9 @@
 import React from "react";
-import { todoContext } from './TodoContext';
 import "../Styles/CreateTodoButtom.css";
 
-function CreateTodoButton(){
-    const {setOpenModal} = React.useContext(todoContext);
+function CreateTodoButton(props){
     function addNewTodo(){
-        setOpenModal(prevState => !prevState)
+        props.setOpenModal(prevState => !prevState)
     }
     return <button className="btn-add" onClick={addNewTodo}><i className="fas fa-solid fa-plus"></i></button>
 }

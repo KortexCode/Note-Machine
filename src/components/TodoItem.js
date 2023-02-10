@@ -1,5 +1,4 @@
 import React from "react";
-import { todoContext } from './TodoContext';
 import "../Styles/TodoItem.css"
 
 function TodoItem(props){
