@@ -47,7 +47,6 @@ function App() {
   else{
     array = JSON.parse(localStorage.getItem("toDos_V1"));
   }
-  
  
   //RETORNAR EL COMPONENTE
   return (
