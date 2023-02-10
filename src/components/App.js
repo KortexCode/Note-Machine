@@ -1,5 +1,4 @@
-/* import logo from './logo.svg'; */
-import React from 'react';
+import React, { useState } from 'react';
 import { TodoCounter } from './TodoCounter';
 import { TodoSearch } from './TodoSearch';
 import { TodoList } from './TodoList';
@@ -8,32 +7,25 @@ import { CreateTodoButton } from './CreateTodoButtom';
 import { Modal } from '../Modal';
 import { TodoForm } from './TodoForm';
 import { todoContext } from './TodoContext';
-//Lista de tareas
-/* const toDosDefault = [
-  {
-    text: "Tener un perfil en linkedIn", completed: false
-  },
-  {
-    text: "Tomar el curso de intro React", completed: false
-  },
-  {
-    text: "Ser fullstakcs en Javascript", completed: false
-  },
-  {
-    text: "Conseguir un trabajo", completed: false
-  },
-]; */
+
 
 function App() {
 
   const {
     loading, 
     error, 
-    searchedTodos, 
+    totalToDos,
+    completedTodos,
+    searchedTodos,
+    searchValue,
+    setSearchValue, 
     completeTodo, 
     deleteTodo, 
     openModal, 
-    storageToDos} = React.useContext(todoContext);
+    setOpenModal,
+    storageToDos,
+    addToDo,
+  } = React.useContext(todoContext);
 
   //Validación para los loadin Skeletons
   let array;
@@ -52,8 +44,8 @@ function App() {
   return (
 
     <React.Fragment>
-      <TodoCounter/>
-      <TodoSearch/>
+      <TodoCounter totalToDos={totalToDos} completedTodos={completedTodos}/>
+      <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} searchedTodos={searchedTodos}/>
       <TodoList>
         {error && <p>Ha ocurrido un error al cargar los datos</p>}
         {loading && <p>Estamos cargando los datos</p>}
@@ -64,7 +56,7 @@ function App() {
           ))}
       </TodoList>    
       {openModal && (<Modal>
-         <TodoForm></TodoForm>
+         <TodoForm storageToDos={storageToDos} setOpenModal={setOpenModal} addToDo={addToDo}></TodoForm>
       </Modal>)}
       <CreateTodoButton/>
     </React.Fragment>

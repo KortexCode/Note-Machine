@@ -1,15 +1,19 @@
 import React from "react";
-import { todoContext } from "./TodoContext";
 
-function TodoForm(){
+function TodoForm(props){
 
     const [text, setText] = React.useState('');
-    const {addToDo, setOpenModal, storageToDos} = React.useContext(todoContext);
  
     function onSend(event){
         event.preventDefault();
-       
-        const repeatNote = storageToDos.filter((todo)=>{
+        //Valida si se ingresa texto o no
+        console.log(text)
+        if(text === ""){
+            return alert("El campo está vacío, debes ingresar una nota");
+        }
+        //Validar si se ingresa la misma tarea guardando un array con la coincidencia o vacio 
+        //si en caso tal no hay coincidencias
+        const repeatNote = props.storageToDos.filter((todo)=>{
             console.log(text)
             const todoText = todo.text.toLowerCase();
             const repeatText = text.toLowerCase();
@@ -17,15 +21,16 @@ function TodoForm(){
             //entonces devolverá un true
             return todoText.includes(repeatText);
         })
-
-        if(!repeatNote[0] || !storageToDos[0]){
-            addToDo(text);
+        //storageToDos vacio significaría que la app se inició por primera vez
+        //repeatNote vacio significa que se puede proceder a crear la tarea
+        if(!repeatNote[0] || !props.storageToDos[0]){
+            props.addToDo(text);
         }else{
             alert("La nota que intentas ingresar ya existe")
         }     
     }
     function onCancel(){
-        setOpenModal(false)
+        props.setOpenModal(false)
     }
     function onChange(event){
         const text = event.target.value;

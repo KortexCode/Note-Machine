@@ -86,18 +86,13 @@ function ToDoContext(){
     function addToDo(text){
 
       const newTodos = [...storageToDos];
-      if(text){
-        newTodos.push({
+
+      newTodos.push({
           text,
           completed: false
-        });
-      }else{
-        alert("Debes ingresar algún texto para crear una tarea")
-      }
-      
+      }); 
       localStorage.setItem("toDos_V1", JSON.stringify(newTodos));
       setStorageToDos(newTodos);
-      
     }
     //RENDERIZADO EN DESKTOP
     React.useEffect(()=>{
