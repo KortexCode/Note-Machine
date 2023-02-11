@@ -6,6 +6,7 @@ import { TodoItem } from './TodoItem';
 import { CreateTodoButton } from './CreateTodoButtom';
 import { Modal } from '../Modal';
 import { TodoForm } from './TodoForm';
+import { TodoMessage } from './TodoMessage';
 import {useToDo} from '../hooks/useTodo';
 
 
@@ -47,15 +48,20 @@ function App() {
     <React.Fragment>
       <TodoCounter totalToDos={totalToDos} completedTodos={completedTodos}/>
       <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} searchedTodos={searchedTodos}/>
-      <TodoList>
-        {error && <p>Ha ocurrido un error al cargar los datos</p>}
-        {loading && <p>Estamos cargando los datos</p>}
-        {loading &&  array.map((todo)=> <li key={todo.text} className='todo-item--skeleton'></li>)} 
-        {(!loading && !storageToDos.length) && <p>Crea tu primer ToDo</p>}
-        {searchedTodos.map(todo => (
-        <TodoItem key={todo.text} text={todo.text} completed={todo.completed} onCompleted={() => completeTodo(todo.text)} onDelete={()=> deleteTodo(todo.text)}/>
-          ))}
-      </TodoList>    
+      <TodoList 
+        searchedTodos={searchedTodos}
+        loading={loading}
+        error={error}
+        storageToDos={storageToDos}
+        renderMenssage={(message)=><TodoMessage message={message}/>}
+        
+        skeleton={()=> loading &&  array.map((todo)=> <li key={todo.text} className='todo-item--skeleton'></li>)}
+
+        render={(todo)=> (
+          <TodoItem key={todo.text} text={todo.text} completed={todo.completed} onCompleted={() => completeTodo(todo.text)} onDelete={()=> deleteTodo(todo.text)}/>
+        )}
+       
+      />   
       {openModal && (<Modal>
          <TodoForm storageToDos={storageToDos} setOpenModal={setOpenModal} addToDo={addToDo}></TodoForm>
       </Modal>)}
