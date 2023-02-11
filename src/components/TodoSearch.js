@@ -14,7 +14,7 @@ function TodoSearch(props){
                     <i className="fa-sharp fa-solid fa-magnifying-glass"></i>
                 </span>
             </div>     
-            {(props.searchValue && !props.searchedTodos.length) && <p className="todo-search__coincidences">La búsqueda solicitada no encuentra coincidencias</p>} 
+            {(props.searchValue && !props.searchedTodos.length) && <p className="todo-search__coincidences">La búsqueda solicitada no encuentra coincidencias para {`"${props.searchValue}".`} </p>} 
         </React.Fragment>    
     )
 }

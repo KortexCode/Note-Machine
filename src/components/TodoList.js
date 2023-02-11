@@ -6,7 +6,8 @@ function TodoList(props){
     const message = {
         loading: props.loading,
         error: props.error,
-        storageToDos : props.storageToDos
+        storageToDos : props.storageToDos,
+        searchValue: props.searchValue
     }
 
     return (
@@ -14,7 +15,7 @@ function TodoList(props){
             <ul>
                 {props.renderMenssage(message)}
                 {props.skeleton()}
-                {props.searchedTodos.map(props.render)}
+                {props.searchedTodos.map(props.children)}
             </ul>
         </section>
     )

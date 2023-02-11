@@ -52,16 +52,17 @@ function App() {
         searchedTodos={searchedTodos}
         loading={loading}
         error={error}
+        searchValue={searchValue}
         storageToDos={storageToDos}
         renderMenssage={(message)=><TodoMessage message={message}/>}
-        
-        skeleton={()=> loading &&  array.map((todo)=> <li key={todo.text} className='todo-item--skeleton'></li>)}
 
-        render={(todo)=> (
+        skeleton={()=> loading &&  array.map((todo)=> <li key={todo.text} className='todo-item--skeleton'></li>)}
+      >  
+        {(todo)=> (
           <TodoItem key={todo.text} text={todo.text} completed={todo.completed} onCompleted={() => completeTodo(todo.text)} onDelete={()=> deleteTodo(todo.text)}/>
         )}
-       
-      />   
+      </TodoList>
+
       {openModal && (<Modal>
          <TodoForm storageToDos={storageToDos} setOpenModal={setOpenModal} addToDo={addToDo}></TodoForm>
       </Modal>)}
