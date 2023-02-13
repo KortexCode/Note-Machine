@@ -4,6 +4,8 @@ function useLocalStorage(item, initialItem){
     //Se crean estados para simular la carga de una API
     const [loading, setLoading] = React.useState(true);
     const [error, setError] = React.useState(false);
+    //Se crea estado para la sincronización de la app con otras páginas donde esté abierta
+    const [sincronize, setSincronize] = React.useState(true);
     //Se crean un estado donde se almacenarán los toDos que hay en localStorage
     const [storageToDos, setStorageToDos] = React.useState(initialItem)
     //Se crea un estado para manejar los toDos consultados en el input
@@ -29,12 +31,18 @@ function useLocalStorage(item, initialItem){
           }
           setToDos(newToDos);
           setLoading(false);
-          setStorageToDos(newToDos)
+          setStorageToDos(newToDos);
+          setSincronize(true);
         }catch(e){
           setError(e);
         }
       }, 1000)
-    }, []);
+    }, [sincronize]);
+
+    const sincronizeToDos = ()=>{
+      setSincronize(false);
+      setLoading(true);
+    }
     
     //Tomaremos lo que hay en localStorage y modificaremos el item del array donde se hayan hecho
     //cambios, luego guardaremos nuevamente esos cambios en el mismo localStorage
@@ -71,6 +79,7 @@ function useLocalStorage(item, initialItem){
       storageToDos, 
       loading,
       error,
+      sincronizeToDos,
       setToDos,
       saveDataInLocalStorage,
       setStorageToDos

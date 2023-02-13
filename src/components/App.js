@@ -8,7 +8,7 @@ import { Modal } from '../Modal';
 import { TodoForm } from './TodoForm';
 import { TodoMessage } from './TodoMessage';
 import {useToDo} from '../hooks/useTodo';
-
+import { ChangeAlertWithStorageListener } from './ChangeAlert';
 
 
 function App() {
@@ -16,6 +16,7 @@ function App() {
   const {
     loading, 
     error, 
+    sincronizeToDos,
     totalToDos,
     completedTodos,
     searchedTodos,
@@ -48,7 +49,8 @@ function App() {
     <React.Fragment>
       <TodoCounter totalToDos={totalToDos} completedTodos={completedTodos}/>
       <TodoSearch loading={loading} searchValue={searchValue} setSearchValue={setSearchValue} searchedTodos={searchedTodos}/>
-      <TodoList 
+      <ChangeAlertWithStorageListener sincronizeToDos={sincronizeToDos} />
+      {!loading && <TodoList 
         searchedTodos={searchedTodos}
         loading={loading}
         error={error}
@@ -61,17 +63,13 @@ function App() {
         {(todo)=> (
           <TodoItem key={todo.text} text={todo.text} completed={todo.completed} onCompleted={() => completeTodo(todo.text)} onDelete={()=> deleteTodo(todo.text)}/>
         )}
-      </TodoList>
-
+      </TodoList>}
       {openModal && (<Modal>
          <TodoForm storageToDos={storageToDos} setOpenModal={setOpenModal} addToDo={addToDo}></TodoForm>
       </Modal>)}
       <CreateTodoButton setOpenModal={setOpenModal}/>
     </React.Fragment>
-   
-  );
-   
-   
+  ); 
 }
 
 export {App};

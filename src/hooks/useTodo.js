@@ -9,6 +9,7 @@ function useToDo(){
         storageToDos, 
         loading,
         error,
+        sincronizeToDos,
         setToDos,
         setStorageToDos,
         saveDataInLocalStorage
@@ -39,7 +40,6 @@ function useToDo(){
     }
     else{ //En caso que si se esté haciendo una consulta
       //Guardamos un array con los elementos consultados
-      console.log("toDos", toDos);
       searchedTodos = toDos.filter( todo => {
         const todoText = todo.text.toLowerCase();
         const todoSearch = searchValue.toLowerCase();
@@ -103,7 +103,6 @@ function useToDo(){
         }
       }
       return ()=> {
-        console.log("limpiando")
         window.removeEventListener("resize", resizeListener);
       } 
     }, [])
@@ -119,6 +118,8 @@ function useToDo(){
       totalToDos,
       searchedTodos,
       storageToDos, 
+      setStorageToDos,
+      sincronizeToDos,
       loading,
       error,
       addToDo,

@@ -32,6 +32,10 @@
 .todo-item span .check{
     font-size: 28px;   
 }
+.todo-item span .check:hover{
+    color:green;
+    -webkit-text-fill-color: green; 
+}
 .todo-item .todo-item__btn-delete{
     margin-right: 4px;
     margin-left: 12px;
