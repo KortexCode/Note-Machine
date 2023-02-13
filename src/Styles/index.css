@@ -47,7 +47,6 @@ h1{
   #modal{
     width: 50%;
     padding-top: 16px;
-    /* padding-top: 16px; */
     height: calc(100vh - 70px);
 
   }

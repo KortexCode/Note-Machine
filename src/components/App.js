@@ -50,7 +50,7 @@ function App() {
       <TodoCounter totalToDos={totalToDos} completedTodos={completedTodos}/>
       <TodoSearch loading={loading} searchValue={searchValue} setSearchValue={setSearchValue} searchedTodos={searchedTodos}/>
       <ChangeAlertWithStorageListener sincronizeToDos={sincronizeToDos} />
-      {!loading && <TodoList 
+      <TodoList 
         searchedTodos={searchedTodos}
         loading={loading}
         error={error}
@@ -59,11 +59,12 @@ function App() {
         renderMenssage={(message)=><TodoMessage message={message}/>}
 
         skeleton={()=> loading &&  array.map((todo)=> <li key={todo.text} className='todo-item--skeleton'></li>)}
-      >  
-        {(todo)=> (
-          <TodoItem key={todo.text} text={todo.text} completed={todo.completed} onCompleted={() => completeTodo(todo.text)} onDelete={()=> deleteTodo(todo.text)}/>
-        )}
-      </TodoList>}
+      > 
+
+       {(todo)=>(<TodoItem key={todo.text} text={todo.text} completed={todo.completed} onCompleted={() => completeTodo(todo.text)} onDelete={()=> deleteTodo(todo.text)}/>)}
+        
+      </TodoList>
+     
       {openModal && (<Modal>
          <TodoForm storageToDos={storageToDos} setOpenModal={setOpenModal} addToDo={addToDo}></TodoForm>
       </Modal>)}

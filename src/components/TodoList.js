@@ -15,8 +15,8 @@ function TodoList(props){
             <ul>
                 {props.renderMenssage(message)}
                 {props.skeleton()}
-                {props.searchedTodos.map(props.children)}
-            </ul>
+                {!message.loading && props.searchedTodos.map(props.children)}
+            </ul>       
         </section>
     )
     
