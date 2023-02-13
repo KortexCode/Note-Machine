@@ -10,6 +10,11 @@
     justify-content: space-around;
     align-items: center;
     background-color: white;
+    transition: opacity 1s;
+}
+.todo-search__container--loading{ 
+    opacity: 25%;
+    
 }
 .todo-search__container:hover{
     border: 3px solid  #698727;

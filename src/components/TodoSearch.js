@@ -8,8 +8,8 @@ function TodoSearch(props){
     }
     return (  
         <React.Fragment>
-            <div className="todo-search__container">
-                <input className="todo-search__input" placeholder='Buscar una tarea' onChange={inputQuery}/>
+            <div className={`todo-search__container ${props.loading && "todo-search__container--loading"}`}>
+                <input className="todo-search__input" disabled={props.loading} placeholder='Buscar una tarea' onChange={inputQuery}/>
                 <span className="todo-search__icon">
                     <i className="fa-sharp fa-solid fa-magnifying-glass"></i>
                 </span>

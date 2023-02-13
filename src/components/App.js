@@ -47,7 +47,7 @@ function App() {
 
     <React.Fragment>
       <TodoCounter totalToDos={totalToDos} completedTodos={completedTodos}/>
-      <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} searchedTodos={searchedTodos}/>
+      <TodoSearch loading={loading} searchValue={searchValue} setSearchValue={setSearchValue} searchedTodos={searchedTodos}/>
       <TodoList 
         searchedTodos={searchedTodos}
         loading={loading}

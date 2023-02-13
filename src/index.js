@@ -6,7 +6,9 @@ import "./Styles/index.css";
 //Aquí renderizamos la app completa
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <App/>
+    <React.Fragment>
+        <App/> 
+    </React.Fragment>
 );
 
 
