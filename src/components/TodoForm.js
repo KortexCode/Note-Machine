@@ -14,7 +14,6 @@ function TodoForm(props){
         //Validar si se ingresa la misma tarea guardando un array con la coincidencia o vacio 
         //si en caso tal no hay coincidencias
         const repeatNote = props.storageToDos.filter((todo)=>{
-            console.log(text)
             const todoText = todo.text.toLowerCase();
             const repeatText = text.toLowerCase();
             //Si lo ingresado en el input concuerda con el texto de la tarea que se busca
@@ -34,7 +33,6 @@ function TodoForm(props){
     }
     function onChange(event){
         const text = event.target.value;
-        
         setText(text);
     }
     
