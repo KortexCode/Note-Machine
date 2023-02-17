@@ -7,7 +7,6 @@ function TodoForm(props){
     function onSend(event){
         event.preventDefault();
         //Valida si se ingresa texto o no
-        console.log(text)
         if(text === ""){
             return alert("El campo está vacío, debes ingresar una nota");
         }
@@ -18,8 +17,9 @@ function TodoForm(props){
             const repeatText = text.toLowerCase();
             //Si lo ingresado en el input concuerda con el texto de la tarea que se busca
             //entonces devolverá un true
-            return todoText.includes(repeatText);
+            return todoText === repeatText;
         })
+        console.log(repeatNote);
         //storageToDos vacio significaría que la app se inició por primera vez
         //repeatNote vacio significa que se puede proceder a crear la tarea
         if(!repeatNote[0] || !props.storageToDos[0]){

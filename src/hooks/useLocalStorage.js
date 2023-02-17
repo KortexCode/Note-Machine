@@ -1,47 +1,52 @@
 import React from "react";
 
 function useLocalStorage(item, initialItem){
-    //Se crean estados para simular la carga de una API
-    const [loading, setLoading] = React.useState(true);
-    const [error, setError] = React.useState(false);
-    //Se crea estado para la sincronización de la app con otras páginas donde esté abierta
-    const [sincronize, setSincronize] = React.useState(true);
-    //Se crean un estado donde se almacenarán los toDos que hay en localStorage
-    const [storageToDos, setStorageToDos] = React.useState(initialItem)
-    //Se crea un estado para manejar los toDos consultados en el input
-    const [toDos, setToDos] = React.useState(initialItem);
+    //Se usa un useReducer
+    const [state, dispatch] = React.useReducer(reducer, initial_state(initialItem));
+    //Desestructuración del state
+    const {
+      loading,
+      toDos, 
+      error,
+      sincronize,
+      storageToDos,
+    } = state;
+    //Action Creators
+    const setToDos = (item) => dispatch({type:actionType.updateToDos, payload:item});
+    const setStorageToDos = (item) => dispatch({type:actionType.updateStorage, payload:item});
+    const onThrowError = (item) => dispatch({type:actionType.error, payload:item});
+    const onSicronize = (item) => dispatch({type:actionType.sincronize, payload:item});
+    const onLoading = (item) => dispatch({type:actionType.charge, payload:item});
     
     //Se crea un efecto para emular el tiempo que tarda una API en devolver datos
     //Además esto ocurre una sola vez por lo que arriba se crearon variables de estado
     //para manejar los datos que se usan dentro de la lógica según cambian.
     React.useEffect(()=> {
-      
       setTimeout(()=>{//Luego de 1 segundo se obtendrán los datos de la app
         try{
           let newToDos = [];
           //Almacenamiento de la lista de tareas
           const toDosInLocal = localStorage.getItem(item);
-          
-    
-          if(!toDosInLocal){
+          if(!toDosInLocal){//Si está vacío
             localStorage.setItem(item, JSON.stringify(initialItem));
           }
-          else{
+          else{//De lo contrario guardamos lo que hay en lista
             newToDos = JSON.parse(toDosInLocal);
           }
+          //Actualizamos estados 
           setToDos(newToDos);
-          setLoading(false);
+          onLoading(false);
           setStorageToDos(newToDos);
-          setSincronize(true);
+          onSicronize(true);
         }catch(e){
-          setError(e);
+          onThrowError(e);
         }
       }, 1000)
     }, [sincronize]);
 
     const sincronizeToDos = ()=>{
-      setSincronize(false);
-      setLoading(true);
+      onSicronize(false);
+      onLoading(true);
     }
     
     //Tomaremos lo que hay en localStorage y modificaremos el item del array donde se hayan hecho
@@ -66,13 +71,11 @@ function useLocalStorage(item, initialItem){
           todo => todo.text === text
         );
         newArray.splice(todoIndex, 1);
-        console.log("los new de local", newArray)
          //Actualizamos el localStorage
         localStorage.setItem("toDos_V1", JSON.stringify(newArray));
         setStorageToDos(newArray);
       }
     }
-    
   
     return {
       toDos, 
@@ -84,6 +87,54 @@ function useLocalStorage(item, initialItem){
       saveDataInLocalStorage,
       setStorageToDos
     }
+  }
+
+  //Estado inicial para el useReducer
+  const initial_state = (initialItem)=>{
+    return {
+      loading: true,
+      toDos: initialItem, 
+      error: false,
+      sincronize: true,
+      storageToDos: initialItem,
+    }
+  }
+  //Actions types
+  const actionType = {
+    charge: "Loading",
+    error: "Error",
+    sincronize: "Sincronize",
+    updateToDos: "Update ToDos",
+    updateStorage:"Update Storage"
+  }
+  //ObjectReducer que develve todas las posibles acciones dentro de un objeto
+  const objectReducer = (state, payload)=>({
+    [actionType.updateToDos]:{
+      ...state,
+      toDos: payload,
+    },
+    [actionType.updateStorage]:{
+      ...state,
+      storageToDos: payload,
+    },
+    [actionType.error]:{
+      ...state,
+      error: payload,
+    },
+    [actionType.sincronize]:{
+      ...state,
+      sincronize: payload,
+    },
+    [actionType.charge]:{
+      ...state,
+      loading: payload,
+    },
+  })
+  //Función reducer la cual devuelve la actualización del estado
+  function reducer(state, action){
+    //Aquí se valida cual acción se manda a ejecutar desde el dispatch
+    return objectReducer(state, action.payload)[action.type] || state;
+
   }
 
   export {useLocalStorage}

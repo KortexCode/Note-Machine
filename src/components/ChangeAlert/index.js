@@ -20,7 +20,7 @@ function ChangeAlert(props){
             </div>
         )
     }else{
-        console.log("no hubo cambios")
+        return;
     }
 
 }
