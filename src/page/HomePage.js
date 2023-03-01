@@ -33,7 +33,7 @@ function HomePage() {
 
   //Validación para los loadin Skeletons
   let array;
-  array = JSON.parse(localStorage.getItem("toDos_V1"));
+  array = JSON.parse(localStorage.getItem("toDos_V2"));
   if(array === null){
     array = [];
   }
@@ -41,7 +41,7 @@ function HomePage() {
     array = [];
   }
   else{
-    array = JSON.parse(localStorage.getItem("toDos_V1"));
+    array = JSON.parse(localStorage.getItem("toDos_V2"));
   }
  
   //RETORNAR EL COMPONENTE
@@ -62,7 +62,7 @@ function HomePage() {
         skeleton={()=> loading &&  array.map((todo)=> <li key={todo.text} className='todo-item--skeleton'></li>)}
       > 
 
-       {(todo)=>(<TodoItem key={todo.text} text={todo.text} completed={todo.completed} onCompleted={() => completeTodo(todo.text)} onDelete={()=> deleteTodo(todo.text)} onEdit={()=>editToDo(todo.text)} />)}
+       {(todo)=>(<TodoItem key={todo.text} id={todo.id} text={todo.text} completed={todo.completed} onCompleted={() => completeTodo(todo.text)} onDelete={()=> deleteTodo(todo.text)}/>)}
         
       </TodoList>
      

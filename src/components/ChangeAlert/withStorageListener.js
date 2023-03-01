@@ -21,7 +21,7 @@ function withStorageListener(WrappedComponent){
                 }
             }
             return ()=> {
-              window.removeEventListener("storage", resizeListener);
+              window.removeEventListener("storage", sincronize);
             } 
         }, []) 
        

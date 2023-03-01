@@ -14,7 +14,7 @@ function useToDo(){
         setStorageToDos,
         saveDataInLocalStorage
         
-    } = useLocalStorage("toDos_V1", []); //Custom hook para manejar lógica de estados y preparación de datos
+    } = useLocalStorage("toDos_V2", []); //Custom hook para manejar lógica de estados y preparación de datos
     
     //MARCADOR
     //Filtramos cuantos toDos están completados, esto para el <TodoCounter>
@@ -79,19 +79,29 @@ function useToDo(){
     }
     //AGREGAR UN TODO
     function addToDo(text){
-
+      const id = createId(storageToDos);
       const newTodos = [...storageToDos];
 
       newTodos.push({
           text,
-          completed: false
+          completed: false,
+          id,
       }); 
-      localStorage.setItem("toDos_V1", JSON.stringify(newTodos));
+      localStorage.setItem("toDos_V2", JSON.stringify(newTodos));
       setStorageToDos(newTodos);
     }
     //EDITAR UN TODO
-    function editToDo(text){
-      console.log(`Intentas editar el ToDo "${text}" Chikorita!`);
+    function editToDo(text, id){
+      const newTodos = [...storageToDos];
+      const todoToEdit = newTodos.map((todo)=>{
+        if(todo.id == id){
+          todo.text = text;
+        }
+        return todo;
+      });
+
+      localStorage.setItem("toDos_V2", JSON.stringify(todoToEdit));
+      setStorageToDos(todoToEdit);
     }
     //RENDERIZADO EN DESKTOP
     React.useEffect(()=>{
@@ -129,6 +139,15 @@ function useToDo(){
       deleteTodo,
       completeTodo
     }      
+}
+
+function createId(todos){
+  if(!todos.length){
+    return 1;
+  }
+  const idList = todos.map((todo)=> todo.id);
+  return Math.max(...idList) + 1;
+ /*  return Date.now().toString(16); */
 }
 
 export {useToDo}

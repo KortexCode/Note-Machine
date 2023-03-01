@@ -53,7 +53,7 @@ function useLocalStorage(item, initialItem){
     //cambios, luego guardaremos nuevamente esos cambios en el mismo localStorage
     function saveDataInLocalStorage(text, typeAction){
 
-      const newArray = JSON.parse(localStorage.getItem("toDos_V1"));
+      const newArray = JSON.parse(localStorage.getItem("toDos_V2"));
       const todoIndex = newArray.findIndex(
         todo => todo.text === text
       );
@@ -61,18 +61,18 @@ function useLocalStorage(item, initialItem){
         !newArray[todoIndex].completed ? newArray[todoIndex].completed = true :  
         newArray[todoIndex].completed = false;
         //Actualizamos el localStorage
-        localStorage.setItem("toDos_V1", JSON.stringify(newArray));
+        localStorage.setItem("toDos_V2", JSON.stringify(newArray));
         setStorageToDos(newArray);
       }
       if(typeAction === "delete"){
         //Se borra el toDo que tenga coincidencia con el parámetro text
-        const newArray = JSON.parse(localStorage.getItem("toDos_V1"));
+        const newArray = JSON.parse(localStorage.getItem("toDos_V2"));
         const todoIndex = newArray.findIndex(
           todo => todo.text === text
         );
         newArray.splice(todoIndex, 1);
          //Actualizamos el localStorage
-        localStorage.setItem("toDos_V1", JSON.stringify(newArray));
+        localStorage.setItem("toDos_V2", JSON.stringify(newArray));
         setStorageToDos(newArray);
       }
     }
