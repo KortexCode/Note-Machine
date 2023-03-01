@@ -16,18 +16,19 @@ function HomePage() {
   const {
     loading, 
     error, 
-    sincronizeToDos,
     totalToDos,
     completedTodos,
     searchedTodos,
     searchValue,
+    openModal, 
+    storageToDos,
+    sincronizeToDos,
     setSearchValue, 
     completeTodo, 
     deleteTodo, 
-    openModal, 
-    setOpenModal,
-    storageToDos,
     addToDo,
+    editToDo,
+    setOpenModal,
   } = useToDo();
 
   //Validación para los loadin Skeletons
@@ -61,7 +62,7 @@ function HomePage() {
         skeleton={()=> loading &&  array.map((todo)=> <li key={todo.text} className='todo-item--skeleton'></li>)}
       > 
 
-       {(todo)=>(<TodoItem key={todo.text} text={todo.text} completed={todo.completed} onCompleted={() => completeTodo(todo.text)} onDelete={()=> deleteTodo(todo.text)}/>)}
+       {(todo)=>(<TodoItem key={todo.text} text={todo.text} completed={todo.completed} onCompleted={() => completeTodo(todo.text)} onDelete={()=> deleteTodo(todo.text)} onEdit={()=>editToDo(todo.text)} />)}
         
       </TodoList>
      

@@ -9,9 +9,14 @@ function TodoItem(props){
                     <i className="check fas fa-regular fa-square-check"></i>
                 </span>
                 <p className={`${props.completed && "todo-item__task--completed"}`}>{props.text}</p>
-                <span className="todo-item__btn-delete" onClick={props.onDelete}>
-                    <i className="delete fas fa-solid fa-trash"></i>
-                </span>
+                <div className="container-btn">
+                    <span className="todo-item__btn-edit" onClick={props.onEdit}>
+                        <i className="edit fas fa-light fa-pen-to-square"></i>
+                    </span>
+                    <span className="todo-item__btn-delete" onClick={props.onDelete}>
+                        <i className="delete fas fa-solid fa-trash"></i>
+                    </span>
+                </div>
             </li>
         </React.Fragment>
       );

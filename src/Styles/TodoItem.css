@@ -31,6 +31,22 @@
 .todo-item span .check{
     font-size: 28px;   
 }
+.container-btn{
+    display: flex;
+    align-items: center;
+}
+.todo-item .todo-item__btn-edit{
+    margin-left: 8px;
+    margin-right: 4px;
+    color: black;
+    -webkit-text-fill-color: #fcfcfc00; 
+    /* Bordes al texto */
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
+.todo-item span .edit{
+    font-size: 24px;   
+}
 
 .todo-item .todo-item__btn-delete{
     margin-right: 4px;

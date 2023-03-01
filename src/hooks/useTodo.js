@@ -67,7 +67,6 @@ function useToDo(){
       setToDos(newToDos);
       
     }
-    
     //ELIMINAR UN TODO
     function deleteTodo(text){
       saveDataInLocalStorage(text, "delete");//Esta función modifica lo que hay en localStorage
@@ -78,7 +77,6 @@ function useToDo(){
       newToDos.splice(todoIndexSearch, 1);
       setToDos(newToDos);
     }
-
     //AGREGAR UN TODO
     function addToDo(text){
 
@@ -90,6 +88,10 @@ function useToDo(){
       }); 
       localStorage.setItem("toDos_V1", JSON.stringify(newTodos));
       setStorageToDos(newTodos);
+    }
+    //EDITAR UN TODO
+    function editToDo(text){
+      console.log(`Intentas editar el ToDo "${text}" Chikorita!`);
     }
     //RENDERIZADO EN DESKTOP
     React.useEffect(()=>{
@@ -110,18 +112,19 @@ function useToDo(){
     return {
       completedTodos,
       toDos, 
-      setToDos,
       searchValue,
-      setSearchValue,
       openModal,
-      setOpenModal,
       totalToDos,
       searchedTodos,
       storageToDos, 
-      setStorageToDos,
-      sincronizeToDos,
       loading,
       error,
+      setToDos,
+      setSearchValue,
+      setOpenModal,
+      setStorageToDos,
+      sincronizeToDos,
+      editToDo,
       addToDo,
       deleteTodo,
       completeTodo
