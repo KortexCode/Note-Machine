@@ -1,14 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {App} from './components/App';
+import { RouterProvider } from 'react-router-dom';
 import "./Styles/index.css";
+import {router} from './router';
 
-//Aquí renderizamos la app completa
+//Aquí renderizamos la app desde su ruta principal
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <React.Fragment>
-        <App/> 
-    </React.Fragment>
+    <RouterProvider router={router} />
 );
 
 

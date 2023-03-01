@@ -1,6 +1,6 @@
 {
     "presets": [
         "@babel/preset-env", //Para traspilar js
-        "@babel/preset-react" //Para traspilar jxs
+        "@babel/preset-react" //Para traspilar jsx
     ]
 }

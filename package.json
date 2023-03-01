@@ -22,7 +22,8 @@
   "homepage": "https://github.com/KortexCode/Note-Machine#readme",
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.8.2"
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",
