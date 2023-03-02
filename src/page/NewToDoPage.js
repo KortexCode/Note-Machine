@@ -1,8 +1,10 @@
 import React from "react";
+import { TodoForm } from "../components/TodoForm";
+import "../Styles/TodoForm.css";
 
 function NewToDoPage(){
     return(
-        <p>NewTodoPage</p>
+        <TodoForm action={"Crear"} text={"Crea una nueva tarea"}/>
     )
 }
 

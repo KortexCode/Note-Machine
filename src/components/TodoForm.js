@@ -1,35 +1,47 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useToDo } from "../hooks/useTodo";
 
 function TodoForm(props){
-
+    const {storageToDos, addToDo, editToDo} = useToDo();
     const [text, setText] = React.useState('');
- 
+    const navigate = useNavigate();
+
+
+    //MANEJADORES DE EVENTOS DE CLICK
     function onSend(event){
         event.preventDefault();
         //Valida si se ingresa texto o no
         if(text === ""){
             return alert("El campo está vacío, debes ingresar una nota");
         }
-        //Validar si se ingresa la misma tarea guardando un array con la coincidencia o vacio 
-        //si en caso tal no hay coincidencias
-        const repeatNote = props.storageToDos.filter((todo)=>{
+        //Validar si se ingresa la misma tarea.
+        const repeatNote = storageToDos.filter((todo)=>{
             const todoText = todo.text.toLowerCase();
             const repeatText = text.toLowerCase();
-            //Si lo ingresado en el input concuerda con el texto de la tarea que se busca
-            //entonces devolverá un true
+            //Si lo ingresado en el input concuerda con el texto de alguna tarea existente
+            //devolverá un true
             return todoText === repeatText;
         })
-        console.log(repeatNote);
-        //storageToDos vacio significaría que la app se inició por primera vez
-        //repeatNote vacio significa que se puede proceder a crear la tarea
-        if(!repeatNote[0] || !props.storageToDos[0]){
-            props.addToDo(text);
-        }else{
+        //VALIDACIÓN SOBRE CUAL ACCIÓN EJECUTAR
+        if(props.action === "Crear"){
+             //storageToDos vacio significaría que la app se inició por primera vez
+            //repeatNote vacio significa que se puede proceder a crear la tarea
+            if(!repeatNote[0] || !storageToDos[0]){
+                addToDo(text);
+                navigate("/");
+            }
+        }
+        else if(props.action === "Editar"){
+            editToDo(text, props.param);   
+            navigate("/");
+        }
+        else{
             alert("La nota que intentas ingresar ya existe")
         }     
     }
     function onCancel(){
-        props.setOpenModal(false)
+        navigate("/");
     }
     function onChange(event){
         const text = event.target.value;
@@ -37,12 +49,12 @@ function TodoForm(props){
     }
     
     return(
-        <form className='AddToDo'>
-            <label className='AddToDo__title' name='addtodo'>Crea una nueva tarea</label>
-            <textarea className='AddToDo__text-area' type='text' placeholder='Escribe una tarea nueva' name='addtodo' value={text} onChange={onChange}></textarea>    
-            <div className='AddToDo__btn-container'>
-                <button type='button' onClick={onSend} className='AddToDo__btn-add'>Agregar</button>   
-                <button type='button' onClick={onCancel} className='AddToDo__btn-cancel'>Cancelar</button>  
+        <form className='form'>
+            <label className='form__title' name='addtodo'>{props.text}</label>
+            <textarea className='form__text-area' type='text' placeholder='Escribe una tarea nueva' name='addtodo' value={text} onChange={onChange}></textarea>    
+            <div className='form__btn-container'>
+                <button type='button' onClick={onSend} className='form__btn-action'>{props.action}</button>   
+                <button type='button' onClick={onCancel} className='form__btn-cancel'>Cancelar</button>  
             </div>   
         </form>   
     )

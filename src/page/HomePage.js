@@ -66,10 +66,10 @@ function HomePage() {
         
       </TodoList>
      
-      {openModal && (<Modal>
+     {/*  {openModal && (<Modal>
          <TodoForm storageToDos={storageToDos} setOpenModal={setOpenModal} addToDo={addToDo}></TodoForm>
-      </Modal>)}
-      <CreateTodoButton setOpenModal={setOpenModal}/>
+      </Modal>)} */}
+      <CreateTodoButton/>
     </React.Fragment>
   ); 
 }

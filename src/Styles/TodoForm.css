@@ -1,5 +1,5 @@
 
-.edit-form{
+.form{
     width: 450px;
     max-width: 450px;
     min-width: 300px;
@@ -18,13 +18,13 @@
     text-align: center;
     background-color: rgba(255, 255, 255, 0.555); 
 }
-.edit-form__title{
+.form__title{
     font-size: 28px;
     font-weight: 700;
     color: black;
    
 }
-.edit-form__text-area{
+.form__text-area{
     margin: 40px 40px;
     width: 260px;
     height: 140px;
@@ -32,19 +32,19 @@
     border: 2px solid #698727;
     outline: none;
 }
-.edit-form__text-area::placeholder{
+.form__text-area::placeholder{
     color: #868686;
     font-family: 'Montserrat';
     font-weight: 400;    
 }
-.edit-form__btn-container{
+.form__btn-container{
     width: 75%;
     max-width: 260px;
     min-width: 225px;
     display: flex;
     justify-content: space-between;
 }
-.edit-form__btn-edit{
+.form__btn-action{
     width: 110px;
     padding: 10px 15px;
     border: 0;
@@ -55,10 +55,10 @@
     color: rgb(7, 7, 7);
     background-color: green;
 }
-.edit-form__btn-edit:hover{
+.form__btn-action:hover{
     color: white;
 }
-.edit-form__btn-cancel{
+.form__btn-cancel{
     width: 110px;
     padding: 10px 15px;
     border: 0;
@@ -69,12 +69,12 @@
     color: rgb(7, 7, 7);
     background-color: red;
 }
-.edit-form__btn-cancel:hover{
+.form__btn-cancel:hover{
     color: white;
 }
 
 @media(min-width: 1024px){
-    .edit-form{
+    .form{
         width: 450px;
         max-width: 450px;
         min-width: 300px;
@@ -87,15 +87,15 @@
         justify-content: start;
         background-color: rgba(255, 255, 255, 0.555);
     }
-    .edit-form__text-area{
+    .form__text-area{
         width: 260px;
         margin: 40px 0;
        
     }
-    .edit-form__btn-container{
+    .form__btn-container{
         justify-content: center;
     }
-    .edit-form__btn-edit{
+    .form__btn-edit{
         margin-right: 5px;
     }
 } 

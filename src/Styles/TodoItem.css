@@ -47,6 +47,9 @@
 .todo-item span .edit{
     font-size: 24px;   
 }
+.todo-item span .edit:hover{
+    -webkit-text-fill-color: rgb(54, 54, 224); 
+}
 
 .todo-item .todo-item__btn-delete{
     margin-right: 4px;
