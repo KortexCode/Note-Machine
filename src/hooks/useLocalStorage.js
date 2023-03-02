@@ -22,6 +22,7 @@ function useLocalStorage(item, initialItem){
     //Además esto ocurre una sola vez por lo que arriba se crearon variables de estado
     //para manejar los datos que se usan dentro de la lógica según cambian.
     React.useEffect(()=> {
+      console.log("recargando")
       setTimeout(()=>{//Luego de 1 segundo se obtendrán los datos de la app
         try{
           let newToDos = [];

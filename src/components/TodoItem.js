@@ -1,16 +1,16 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useToDo } from "../hooks/useTodo";
 import "../Styles/TodoItem.css"
 
 function TodoItem(props){
     const navigate = useNavigate()
     //Manejador de evento de editar
     const handleEdit= ()=>{
-        navigate(`/edit/${props.id}`);
+        navigate(`/edit/${props.id}`, {state:props.text});
     }
 
     return (
-        <React.Fragment>
             <li className="todo-item">
                 <span className={`todo-item__btn-check ${props.completed && "todo-item__btn-check--completed"}`} onClick={props.onCompleted}>
                     <i className="check fas fa-regular fa-square-check"></i>
@@ -24,8 +24,7 @@ function TodoItem(props){
                         <i className="delete fas fa-solid fa-trash"></i>
                     </span>
                 </div>
-            </li>
-        </React.Fragment>
+            </li> 
       );
 }
 

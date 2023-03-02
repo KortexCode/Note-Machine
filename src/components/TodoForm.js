@@ -51,7 +51,8 @@ function TodoForm(props){
     return(
         <form className='form'>
             <label className='form__title' name='addtodo'>{props.text}</label>
-            <textarea className='form__text-area' type='text' placeholder='Escribe una tarea nueva' name='addtodo' value={text} onChange={onChange}></textarea>    
+            {props.action === "Editar" && <p className="form__editText">{props.editText}</p>}
+            <textarea className='form__text-area' type='text' placeholder='Escribe una tarea' name='addtodo' value={text} onChange={onChange}></textarea>    
             <div className='form__btn-container'>
                 <button type='button' onClick={onSend} className='form__btn-action'>{props.action}</button>   
                 <button type='button' onClick={onCancel} className='form__btn-cancel'>Cancelar</button>  

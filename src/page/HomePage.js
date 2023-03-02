@@ -48,8 +48,14 @@ function HomePage() {
   return (
 
     <React.Fragment>
-      <TodoCounter totalToDos={totalToDos} completedTodos={completedTodos}/>
-      <TodoSearch loading={loading} searchValue={searchValue} setSearchValue={setSearchValue} searchedTodos={searchedTodos}/>
+      <TodoCounter 
+        totalToDos={totalToDos} 
+        completedTodos={completedTodos}/>
+      <TodoSearch 
+        loading={loading} 
+        searchValue={searchValue} 
+        setSearchValue={setSearchValue} 
+        searchedTodos={searchedTodos}/>
       <ChangeAlertWithStorageListener sincronizeToDos={sincronizeToDos} />
       <TodoList 
         searchedTodos={searchedTodos}
@@ -58,11 +64,17 @@ function HomePage() {
         searchValue={searchValue}
         storageToDos={storageToDos}
         renderMenssage={(message)=><TodoMessage message={message}/>}
-
         skeleton={()=> loading &&  array.map((todo)=> <li key={todo.text} className='todo-item--skeleton'></li>)}
       > 
 
-       {(todo)=>(<TodoItem key={todo.text} id={todo.id} text={todo.text} completed={todo.completed} onCompleted={() => completeTodo(todo.text)} onDelete={()=> deleteTodo(todo.text)}/>)}
+       {(todo)=>(
+        <TodoItem 
+          key={todo.text} 
+          id={todo.id} text={todo.text} 
+          completed={todo.completed} 
+          onCompleted={() => completeTodo(todo.text)} 
+          onDelete={()=> deleteTodo(todo.text)}
+        />)}
         
       </TodoList>
      
