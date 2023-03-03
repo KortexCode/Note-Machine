@@ -19,23 +19,33 @@ module.exports = {
     },
     module:{
         rules:[
-          {
-              test:/\.(js|jsx)$/,//para que utilice los .mjs o sino los .js
-              exclude: /node_modules/,//para que no busque extensiones .js o mjs en node_modules
-              use:{
-                  loader: "babel-loader",//Este es el cargador para usar babel con webpack 
-              }
-          },
-          {
-              test:/\.html$/,//para que utilice los .html extensiones
-              use:{
-                  loader: "html-loader",//Este es el cargador para usar sintaxis html
-              }
-          },
-          {
-              test:/\.css$/,
-              use: [MiniCssExtractPlugin.loader, "css-loader"]
-          }
+            {
+                test:/\.(js|jsx)$/,//para que utilice los .mjs o sino los .js
+                exclude: /node_modules/,//para que no busque extensiones .js o mjs en node_modules
+                use:{
+                    loader: "babel-loader",//Este es el cargador para usar babel con webpack 
+                }
+            },
+            {
+                test:/\.html$/,//para que utilice los .html extensiones
+                use:{
+                    loader: "html-loader",//Este es el cargador para usar sintaxis html
+                }
+            },
+            {
+                test:/\.css$/,
+                use: [MiniCssExtractPlugin.loader, "css-loader"]
+            },
+            {
+                test: /\.(png|jpe?g|gif)$/, //para que utilice los .png
+                use: {
+                    loader: "file-loader", //Loader para los archivos estáticos
+                    options:{
+                        name:"assets/[hash].ext"
+                    }  
+                },
+                       
+            },
         ]
     },
     plugins:[

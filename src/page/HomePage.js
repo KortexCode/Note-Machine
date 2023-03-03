@@ -4,7 +4,6 @@ import { TodoSearch } from '../components/TodoSearch';
 import { TodoList } from '../components/TodoList';
 import { TodoItem } from '../components/TodoItem';
 import { CreateTodoButton } from '../components/CreateTodoButtom';
-import { Modal } from '../Modal';
 import { TodoForm } from '../components/TodoForm';
 import { TodoMessage } from '../components/TodoMessage';
 import {useToDo} from '../hooks/useTodo';
@@ -20,15 +19,11 @@ function HomePage() {
     completedTodos,
     searchedTodos,
     searchValue,
-    openModal, 
     storageToDos,
     sincronizeToDos,
     setSearchValue, 
     completeTodo, 
     deleteTodo, 
-    addToDo,
-    editToDo,
-    setOpenModal,
   } = useToDo();
 
   //Validación para los loadin Skeletons

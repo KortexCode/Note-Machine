@@ -21,7 +21,6 @@ function useToDo(){
     const completedTodos = storageToDos?.filter((todo)=> !!todo.completed)?.length;
     //Cuantos toDos hay en nuestra lista, completados y no completados.
     const totalToDos = storageToDos?.length;
-
     //Se crean estados para el botón de abrir modal
     const [openModal, setOpenModal] = React.useState(false);
 

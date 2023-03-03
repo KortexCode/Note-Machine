@@ -1,11 +1,17 @@
 import React from "react";
+import imgError from "../assets/404.png";
+import "../Styles/ErrorPage.css"
 
 function ErrorPage(){
     return(
-        <>
-            <h2>ErrorPage</h2>
-            <p>404</p>
-        </>
+        <div className="error">
+            <h2 className="error__title">404</h2>
+            <h2 className="error__text">No encontramos la página que buscas</h2>
+            <img className="error__img" src={imgError}></img>
+            <div className="error__comment-container">
+                <p className="error__comment">Gomenne</p>
+            </div>
+        </div>
     )
 }
 
