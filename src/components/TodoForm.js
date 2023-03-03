@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useToDo } from "../hooks/useTodo";
 
 function TodoForm(props){
-    const {storageToDos, addToDo, editToDo} = useToDo();
+    const {storageToDos, addToDo, editToDo, loading} = useToDo();
     const [text, setText] = React.useState('');
     const navigate = useNavigate();
 
@@ -47,7 +47,6 @@ function TodoForm(props){
         const text = event.target.value;
         setText(text);
     }
-    
     return(
         <form className='form'>
             <label className='form__title' name='addtodo'>{props.text}</label>
