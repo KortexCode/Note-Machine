@@ -7,8 +7,13 @@
   box-sizing: border-box;
 }
 body {
+  width: 100vw;
+  min-height: 100vh;
   font-family: 'Poppins', sans-serif;
   background-color: #B1D16D;
+}
+header {
+  width: 100%;
 }
 h1{
   padding-top: 16px;
@@ -22,9 +27,14 @@ h1{
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: black;
 }
+.app-container {
+  height: auto;
+  width: 100%;
+}
+
 #root{
   width: 100%;
-  padding-top: 16px;
+  padding-top: 32px;
   display: grid;
   grid-template-columns: 100%;
   justify-content: center;

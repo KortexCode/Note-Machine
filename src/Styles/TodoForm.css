@@ -2,7 +2,7 @@
 .form{
     width: 90%;
     min-width: 290px;
-    height: 500px;
+    height: 400px;
     margin: 0 auto;
     padding: 24px 16px 6px 16px;
     box-shadow: 0px 0px 6px 6px #89bb1e;
@@ -30,6 +30,7 @@
     border-radius: 8px;
     border: 2px solid #698727;
     outline: none;
+    font-size: 16px;
 }
 .form__text-area::placeholder{
     color: #868686;
@@ -51,7 +52,7 @@
     font-size: 18px;
     font-weight: 700;
     color: rgb(7, 7, 7);
-    background-color: green;
+    background-color: rgb(83, 214, 23);
 }
 .form__btn-action:hover{
     color: white;
@@ -65,7 +66,7 @@
     font-size: 18px;
     font-weight: 700;
     color: rgb(7, 7, 7);
-    background-color: red;
+    background-color: rgb(230, 169, 169);
 }
 .form__btn-cancel:hover{
     color: white;
@@ -75,7 +76,7 @@
     .form{
         width: 500px;
         min-width: 290px;
-        height: 500px;
+        height: 400px;
         margin: 0 auto;
     }
 } 
